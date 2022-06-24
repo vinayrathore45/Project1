@@ -1,5 +1,8 @@
 const jwt = require('jsonwebtoken')
 const BlogModel = require('../models/blogModel')
+
+//-------------------------------------------------------AUTHENTICATION----------------------------------------------------------------------------//
+
 const authentication = async function (req, res, next) {
   try {
     let token = req.headers["x-Api-key"] || req.headers["x-api-key"];
@@ -14,6 +17,10 @@ const authentication = async function (req, res, next) {
     res.status(500).send({ msg: "Error", error: err.message })
   }
 };
+
+
+//------------------------------------------------------AUTHORIZATION-----------------------------------------------------------------------------//
+
 
 const Authorization = async function (req, res, next) {
   try {

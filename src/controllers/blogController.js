@@ -1,6 +1,10 @@
 const mongoose = require('mongoose')
 const BlogModel = require('../models/blogModel')
 
+
+//-----------------------------------------------------------------CREATE BLOG API-------------------------------------------------------------//
+
+
 const createBlog = async function (req, res) {
   try {
     let data = req.body
@@ -27,6 +31,11 @@ const createBlog = async function (req, res) {
   }
 }
 
+
+//------------------------------------------------------------CREATE BLOG API-------------------------------------------------------------------------------------------------//
+
+
+
 const getblogs = async function (req, res) {
   try {
     let query = req.query
@@ -45,6 +54,12 @@ const getblogs = async function (req, res) {
   }
 
 }
+
+
+
+//--------------------------------------------------------------UPDATE BLOG API---------------------------------------------------------------------------//
+
+
 
 const updateBlog = async function (req, res) {
   try {
@@ -87,6 +102,10 @@ const updateBlog = async function (req, res) {
 }
 
 
+//-----------------------------------------------------DELETE BLOG BY PATH PARAMS API----------------------------------------------------------------------//
+
+
+
 
 const deleteblog1 = async function (req, res) {
   try {
@@ -102,6 +121,11 @@ const deleteblog1 = async function (req, res) {
     res.status(500).send({ msg: "Error", error: err.message })
   }
 }
+
+
+
+//-----------------------------------------------------------DELETE BLOG BY QUERY PARAMS--------------------------------------------------------------------------------//
+
 
 
 
