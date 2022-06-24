@@ -42,7 +42,7 @@ try{
   // const filterblog = await BlogModel.find({$and:[{filterdata},{$or:[{authorId:authorId},{category:category},{tags:tags},{subCategory:subCategory}]}]})
   let query=req.query
   console.log(query)
-  const getblog= await BlogModel.find({$and:[{isPublished:false,isDeleted:false},query]})
+  const getblog= await BlogModel.find({$and:[{isPublished:true,isDeleted:false},query]})
 
   if(getblog.length===0){
     return res.status(404).send({status:false,msg:"no author found"})
@@ -81,10 +81,10 @@ const updateBlog = async function(req, res){
     const updatedBlog= await BlogModel.findOneAndUpdate({_id:blogId},{title:title,body:body,isPublished:true,publishedAt:Date.now()},{new:true},)
     updatedBlog.save()
 
-  //   if(data.subCategory){
-  //  updatedBlog.subCategory.push(subCategory)}
-  //  else{
-  //  updatedBlog.tags.push(tags)}
+    if(data.subCategory){
+    updatedBlog.subCategory.push(subCategory)}
+    else{
+    updatedBlog.tags.push(tags)}
    res.status(200).send({msg:true,data:updatedBlog})
   }
 }
