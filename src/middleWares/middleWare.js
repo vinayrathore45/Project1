@@ -1,4 +1,5 @@
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
+const { default: mongoose } = require('mongoose');
 const BlogModel = require('../models/blogModel')
 
 //-------------------------------------------------------AUTHENTICATION----------------------------------------------------------------------------//
@@ -30,8 +31,11 @@ const Authorization = async function (req, res, next) {
     let authorLoggedIn = decodedToken.loginUser
     req.authorId = authorLoggedIn
     console.log(req.authorId)
-  
-    let blogId = req.params._id
+    let blogId = req.params._id 
+    if(!mongoose.isValidObjectId(blogId)){
+      return res.status(400).send({status:false,msg:'invalid blogId '})
+    }
+
     if (blogId) {
       let findAuthInBlog = await BlogModel.findOne({ _id: blogId })
       let author =findAuthInBlog.authorId.toString()
@@ -47,6 +51,7 @@ const Authorization = async function (req, res, next) {
   }
 
 };
+
 
 
 
