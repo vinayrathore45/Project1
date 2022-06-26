@@ -13,7 +13,6 @@ const authorSchema = new mongoose.Schema({
     title:{
         type:String,
         enum:["mr","mrs","miss"]
-
     },
     email:{
         type:String,
@@ -21,7 +20,7 @@ const authorSchema = new mongoose.Schema({
         unique:true
     },
     password:{
-        type:Number,
+        type:mongoose.Schema.Types.Mixed,
         required:true
     }
 
