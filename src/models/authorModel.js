@@ -20,7 +20,7 @@ const authorSchema = new mongoose.Schema({
         unique:true
     },
     password:{
-        type:mongoose.Schema.Types.Mixed,
+        type:String,
         required:true
     }
 

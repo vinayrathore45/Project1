@@ -30,7 +30,7 @@ const Authorization = async function (req, res, next) {
     let decodedToken = jwt.verify(token, "Project-1");
     let authorLoggedIn = decodedToken.loginUser   // accessing authorid from payload of token 
     req.authorId = authorLoggedIn   //taking  re.authorid variable to use further in controller for updating flag
-    console.log(req.authorId +  " loggedIn author ")
+   // console.log(req.authorId +  " loggedIn author ")
     let blogId = req.params._id   //blogid from path params 
 
     if (blogId) {                 // if condition is only valid for updating and deleting via path params
@@ -56,8 +56,8 @@ const Authorization = async function (req, res, next) {
 
 
 
-module.exports.authentication = authentication
-module.exports.Authorization = Authorization
+module.exports = {authentication,Authorization}
+
 
 
 
